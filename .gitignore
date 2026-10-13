@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+.pytest_cache/
+# extracted netlists and layouts stay out of the repo
+*.gds
+*.oas
+*_extracted.cir
+runs/

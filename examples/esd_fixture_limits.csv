@@ -1,0 +1,4 @@
+pdk,devices,quantity,limit_kind,min,max,unit,conditions,source,citation,device_mapping,note
+gf180,demo_power_clamp,V_clamp,esd_tlp,,5.0,V,HBM-level clamping voltage of the fixture's power clamp,user-asserted,Fixture value for demonstration; enter your clamp's measured or simulated V_clamp here,exact,
+gf180,"nfet_06v0,pfet_06v0",|V_gate-any|,esd_breakdown,,16,V,ESD-timescale gate-oxide breakdown (6 V gate),user-asserted,Fixture value: typical parametric BVox of the 6 V gate (GF180 elec spec 5_General_Specification4 rows 5-6); replace with TLP oxide data,inferred,
+gf180,"nfet_03v3,pfet_03v3",|V_gate-any|,esd_breakdown,,9,V,ESD-timescale gate-oxide breakdown (3.3 V gate),user-asserted,Fixture value: typical parametric BVox of the 3.3 V NMOS gate (GF180 elec spec 5_General_Specification4 row 3; PMOS typ 8.8 V); replace with TLP oxide data,inferred,

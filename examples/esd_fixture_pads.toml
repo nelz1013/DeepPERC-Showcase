@@ -1,0 +1,8 @@
+# Bare pads (no GF180 I/O-library cells), so the pads and rails are declared.
+[pads]
+IN_OK = "io"
+IN_BAD = "io"
+
+[rails]
+VDD = "pos"
+VSS = "gnd"

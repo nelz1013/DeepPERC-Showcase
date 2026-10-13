@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "deepperc-showcase"
+version = "0.1.0"
+description = "ESD path vs. gate-oxide breakdown check for GF180MCU netlists (deepPERC showcase slice)"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+deepperc = "deepperc.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+deepperc = ["data/*.csv"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

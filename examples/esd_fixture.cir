@@ -1,0 +1,31 @@
+* deepPERC fixture: two GF180 pads, one clean, one with a seeded gate-oxide violation.
+*
+* IN_OK : 6 V input gate behind diode_pd2nw_06v0 / diode_nd2ps_06v0 and a VDD-VSS power clamp.
+*         Stress = Vt2 + V_clamp = 6.9 + 5.0 = 11.9 V; 6 V oxide BV 16 V -> PASS (11.9 <= 14.4).
+* IN_BAD: 3.3 V (thin-oxide) input gate on a pad protected by 5/6 V clamps.
+*         PS: ggNMOS snapback max(Vt1, Vt2) = 10.7 V; ND: diode 6.7 + clamp 5.0 = 11.7 V.
+*         Stress 11.7 V > 3.3 V oxide BV 9 V -> FAIL.
+
+.SUBCKT demo_power_clamp VDD VSS
+* RC-triggered bigFET power clamp (simplified)
+R1 VDD TRIG ppolyf_u_1k L=20u W=1u
+C1 TRIG VSS cap_nmos_06v0 c_length=10u c_width=10u
+M1 GN TRIG VDD VDD pfet_06v0 L=0.5u W=10u
+M2 GN TRIG VSS VSS nfet_06v0 L=0.6u W=5u
+M3 VDD GN VSS VSS nfet_06v0 L=0.7u W=400u
+.ENDS demo_power_clamp
+
+.SUBCKT esd_fixture IN_OK IN_BAD VDD VSS
+XPC VDD VSS demo_power_clamp
+* --- IN_OK: dual-diode protection, 6 V receiver
+D1 IN_OK VDD diode_pd2nw_06v0 A=20p P=40u
+D2 VSS IN_OK diode_nd2ps_06v0 A=20p P=40u
+M10 OUT_OK IN_OK VSS VSS nfet_06v0 L=0.7u W=2u
+M11 OUT_OK IN_OK VDD VDD pfet_06v0 L=0.5u W=4u
+* --- IN_BAD: 5/6 V ggNMOS + down diode, but a 3.3 V receiver
+M20 IN_BAD GG VSS VSS nfet_06v0_dss L=0.7u W=50u
+R20 GG VSS ppolyf_u_1k L=5u W=1u
+D21 VSS IN_BAD diode_nd2ps_06v0 A=20p P=40u
+M22 OUT_BAD IN_BAD VSS VSS nfet_03v3 L=0.28u W=1u
+M23 OUT_BAD IN_BAD VDD VDD pfet_03v3 L=0.28u W=2u
+.ENDS esd_fixture
