@@ -76,7 +76,7 @@ The MVP is in its testing phase: the checks are built, and they are now being ru
 
 deepPERC is a sibling of deepERC, a board-level electrical rule checker: the methodology carries over from board to die. Built by Nelson, a hardware engineer with a background in reliability and radiation effects (Intel, Applied Materials, NASA).
 
-<LINKEDIN> · <EMAIL>
+[LinkedIn](https://www.linkedin.com/in/nelson-gaspard-4645291a/) · [nelson.j.gaspard@gmail.com](mailto:nelson.j.gaspard@gmail.com)
 
 ## License
 
