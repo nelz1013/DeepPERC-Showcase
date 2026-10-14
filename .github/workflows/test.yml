@@ -18,4 +18,7 @@ jobs:
       - run: pip install -e '.[dev]'
       - run: pytest -q
       - name: Quickstart
-        run: deepperc esd-window examples/esd_fixture.cir --pads examples/esd_fixture_pads.toml --limits examples/esd_fixture_limits.csv; test $? -eq 1
+        run: |
+          rc=0
+          deepperc esd-window examples/esd_fixture.cir --pads examples/esd_fixture_pads.toml --limits examples/esd_fixture_limits.csv || rc=$?
+          test "$rc" -eq 1
