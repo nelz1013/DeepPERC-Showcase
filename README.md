@@ -80,4 +80,4 @@ deepPERC is a sibling of deepERC, a board-level electrical rule checker: the met
 
 ## License
 
-<LICENSE>
+Apache License 2.0. See [LICENSE](LICENSE). Copyright 2026 Nelson Gaspard.
